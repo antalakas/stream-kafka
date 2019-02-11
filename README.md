@@ -1,2 +1,2 @@
 # stream-kafka
-stream-kaka
+stream-kafka
