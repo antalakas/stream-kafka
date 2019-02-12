@@ -1,4 +1,4 @@
-module stream-kafka
+module stream-sources
 
 require (
 	github.com/BurntSushi/toml v0.3.1 // indirect
