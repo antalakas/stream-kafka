@@ -1,4 +1,4 @@
-module streamsourcesandreas
+module github.com/antalakas/stream-kafka
 
 require (
 	github.com/BurntSushi/toml v0.3.1 // indirect
