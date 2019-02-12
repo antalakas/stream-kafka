@@ -1,1 +1,1 @@
-package stream_sources
+package stream_kafka
