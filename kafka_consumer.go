@@ -1,4 +1,4 @@
-package stream_sources
+package stream_kafka
 
 import (
 	structs "github.com/antalakas/stream-structs"
