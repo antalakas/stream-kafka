@@ -1,2 +1,2 @@
-# stream-kafka
-stream-kafka
+# stream-sources
+stream-sources
