@@ -100,7 +100,8 @@ func (consumer *cbfKafkaConsumer) ConsumeStream(
 	empty structs.EmptyInterface) {
 
 
-	log.Info("Created Consumer %v\n", consumer.KakfaConsumer)
+	log.Info(fmt.Sprintf("Created Consumer %v\n",
+		consumer.KakfaConsumer))
 
 	err := consumer.KakfaConsumer.SubscribeTopics(
 		[]string{consumer.Topic}, nil)
@@ -125,7 +126,7 @@ func (consumer *cbfKafkaConsumer) ConsumeStream(
 	for run == true {
 		select {
 		case sig := <-sigchan:
-			log.Info("Caught signal %v: terminating\n", sig)
+			log.Info(fmt.Sprintf("Caught signal %v: terminating\n", sig))
 			run = false
 
 		case ev := <-consumer.KakfaConsumer.Events():
