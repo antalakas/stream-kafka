@@ -89,7 +89,7 @@ func (consumer *cbfKafkaConsumer) Init(continent string) (string,
 		"fetch.wait.max.ms": fetch_wait_max_ms})
 
 	if err != nil {
-		fmt.Println(fmt.Sprintf("Failed to create consumer: %s\n", err))
+		log.Info(fmt.Sprintf("Failed to create consumer: %s\n", err))
 		os.Exit(1)
 	}
 
@@ -100,13 +100,13 @@ func (consumer *cbfKafkaConsumer) ConsumeStream(
 	empty structs.EmptyInterface) {
 
 
-	fmt.Printf("Created Consumer %v\n", consumer.KakfaConsumer)
+	log.Info("Created Consumer %v\n", consumer.KakfaConsumer)
 
 	err := consumer.KakfaConsumer.SubscribeTopics(
 		[]string{consumer.Topic}, nil)
 
 	if err != nil {
-		fmt.Println(fmt.Sprintf(
+		log.Info(fmt.Sprintf(
 			"Unable to subscribe to topic: %s\n", err))
 		os.Exit(1)
 	}
@@ -125,7 +125,7 @@ func (consumer *cbfKafkaConsumer) ConsumeStream(
 	for run == true {
 		select {
 		case sig := <-sigchan:
-			fmt.Printf("Caught signal %v: terminating\n", sig)
+			log.Info("Caught signal %v: terminating\n", sig)
 			run = false
 
 		case ev := <-consumer.KakfaConsumer.Events():
