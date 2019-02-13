@@ -73,7 +73,7 @@ func (consumer *cbfKafkaConsumer) Init(continent string) (string,
 		"fetch_min_bytes": fetch_min_bytes,
 		"fetch_message_max_bytes": fetch_message_max_bytes,
 		"fetch_wait_max_ms": fetch_wait_max_ms,
-	}).Info("Kafka configuration: ")
+	}).Info("Kafka Consumer configuration: ")
 
 	var err error
 	consumer.KakfaConsumer, err = kafka.NewConsumer(&kafka.ConfigMap{
