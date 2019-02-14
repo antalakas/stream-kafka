@@ -177,7 +177,8 @@ func (consumer *cbfKafkaConsumer) ConsumeStream(
 				// the client will try to automatically recover
 				log.Info(fmt.Sprintf("%% Error: %v\n", e))
 			default:
-				log.Info(fmt.Sprintf("Ignored %v\n", e))
+				//log.Info(fmt.Sprintf("Ignored %v\n", e))
+				break
 			}
 		}
 	}
