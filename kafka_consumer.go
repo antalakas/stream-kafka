@@ -190,7 +190,23 @@ func (consumer *cbfKafkaConsumer) ConsumeStream(
 // internal function to actually use the directional channel
 func (consumer *cbfKafkaConsumer) messageSender(theMessage *kafka.Message,
 	messageChan chan<- *kafka.Message) {
-	messageChan <- theMessage
+
+    // https://www.rapidloop.com/blog/golang-channels-tips-tricks.html
+
+	// next line will block queue is full
+	//messageChan <- theMessage
+
+	// for a non-blocking push, do this:
+	//var ok bool
+	select {
+	case messageChan <- theMessage:
+		//true  => enqueued without blocking
+		//ok = true
+	default:
+		//false => not enqueued, would have blocked because of queue full
+		//ok = false
+		log.Info("kafka_consumer - messageSender - Queue is FULL")
+	}
 }
 
 // internal function to actually use the directional channel
